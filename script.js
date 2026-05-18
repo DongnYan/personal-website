@@ -8,7 +8,6 @@ const content = {
       hobbies: "爱好",
       contact: "联系",
     },
-    menuLabel: "菜单",
     hero: {
       title: "颜东宁",
       subtitle: "Dongning (Don) Yan",
@@ -21,6 +20,10 @@ const content = {
       audenciaName: "Audencia Business School",
       audenciaDegree: "理学学士 · 金融科技专业",
       audenciaTime: "2022.09 - 2026.07",
+      masterDegreeLabel: "硕士",
+      cuhkName: "香港中文大学",
+      cuhkDegree: "理学硕士 · 管理学专业",
+      cuhkTime: "2026.09 - 2027.07",
       exchangeLabel: "法国交换",
       exchangeSchools: "Audencia Business School × Centrale Nantes",
       exchangeProgram: "工商管理项目 BBA Data, AI & Management",
@@ -87,7 +90,6 @@ const content = {
       hobbies: "Hobbies",
       contact: "Contact",
     },
-    menuLabel: "Menu",
     hero: {
       title: "颜东宁",
       subtitle: "Dongning (Don) Yan",
@@ -100,6 +102,10 @@ const content = {
       audenciaName: "Audencia Business School",
       audenciaDegree: "Bachelor of Science · Financial Technology",
       audenciaTime: "Sep 2022 - Jul 2026",
+      masterDegreeLabel: "Master's Degree",
+      cuhkName: "The Chinese University of Hong Kong",
+      cuhkDegree: "Master of Science Management",
+      cuhkTime: "Sep 2026 - Jul 2027",
       exchangeLabel: "France Exchange",
       exchangeSchools: "Audencia Business School × Centrale Nantes",
       exchangeProgram: "BBA Data, AI & Management",
@@ -160,13 +166,9 @@ const content = {
 };
 
 const langButtons = document.querySelectorAll("[data-set-lang]");
-const navLinks = document.querySelectorAll("[data-nav-link]");
+const navLinks = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("[data-section]");
 const heroPhoto = document.querySelector(".hero-photo");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-const mobileMenuLabel = document.getElementById("mobileMenuLabel");
-const mobileMenuClosers = document.querySelectorAll("[data-close-menu]");
 
 function setText(id, value) {
   const element = document.getElementById(id);
@@ -216,15 +218,10 @@ function render(lang) {
     .querySelector('meta[property="og:description"]')
     .setAttribute("content", text.metaDescription);
 
-  Object.entries(text.nav).forEach(([key, value]) => {
-    document.querySelectorAll(`[data-nav="${key}"]`).forEach((link) => {
-      link.textContent = value;
-    });
-  });
-
-  if (mobileMenuLabel) {
-    mobileMenuLabel.textContent = text.menuLabel;
-  }
+  setText("navProfile", text.nav.profile);
+  setText("navInternships", text.nav.internships);
+  setText("navHobbies", text.nav.hobbies);
+  setText("navContact", text.nav.contact);
 
   setText("heroTitle", text.hero.title);
   setText("heroSubtitle", text.hero.subtitle);
@@ -236,6 +233,10 @@ function render(lang) {
   setText("audenciaName", text.profile.audenciaName);
   setText("audenciaDegree", text.profile.audenciaDegree);
   setText("audenciaTime", text.profile.audenciaTime);
+  setText("masterDegreeLabel", text.profile.masterDegreeLabel);
+  setText("cuhkName", text.profile.cuhkName);
+  setText("cuhkDegree", text.profile.cuhkDegree);
+  setText("cuhkTime", text.profile.cuhkTime);
   setText("exchangeLabel", text.profile.exchangeLabel);
   setText("exchangeSchools", text.profile.exchangeSchools);
   setText("exchangeProgram", text.profile.exchangeProgram);
@@ -256,17 +257,6 @@ function render(lang) {
   });
 
   localStorage.setItem("site-lang", lang);
-}
-
-function setMobileMenuOpen(isOpen) {
-  if (!mobileMenu || !mobileMenuToggle) {
-    return;
-  }
-
-  mobileMenu.hidden = !isOpen;
-  mobileMenu.classList.toggle("is-open", isOpen);
-  document.body.classList.toggle("menu-open", isOpen);
-  mobileMenuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 }
 
 function updateActiveNav() {
@@ -329,12 +319,6 @@ window.addEventListener(
 
 window.addEventListener("resize", updateActiveNav);
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 980) {
-    setMobileMenuOpen(false);
-  }
-});
-
 langButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const lang = button.dataset.setLang;
@@ -342,33 +326,6 @@ langButtons.forEach((button) => {
       render(lang);
     }
   });
-});
-
-if (mobileMenuToggle) {
-  mobileMenuToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu?.classList.contains("is-open");
-    setMobileMenuOpen(!isOpen);
-  });
-}
-
-mobileMenuClosers.forEach((button) => {
-  button.addEventListener("click", () => {
-    setMobileMenuOpen(false);
-  });
-});
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    if (window.innerWidth <= 980) {
-      setMobileMenuOpen(false);
-    }
-  });
-});
-
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    setMobileMenuOpen(false);
-  }
 });
 
 render(localStorage.getItem("site-lang") || "zh");
