@@ -104,7 +104,7 @@ const content = {
       audenciaTime: "Sep 2022 - Jul 2026",
       masterDegreeLabel: "Master's Degree",
       cuhkName: "The Chinese University of Hong Kong",
-      cuhkDegree: "Master of Science Management",
+      cuhkDegree: "Master of Science · Management",
       cuhkTime: "Sep 2026 - Jul 2027",
       exchangeLabel: "France Exchange",
       exchangeSchools: "Audencia Business School × Centrale Nantes",
