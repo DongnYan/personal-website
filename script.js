@@ -40,7 +40,7 @@ const content = {
         company: "广发证券",
         department: "投行业务",
         time: "2026.07 - 至今",
-        location: "广州",
+        location: "深圳",
       },
       {
         logo: "./红土创新基金.jpg",
@@ -136,7 +136,7 @@ const content = {
         company: "GF Securities",
         department: "Investment Banking",
         time: "Jul 2026 - Present",
-        location: "Guangzhou",
+        location: "Shenzhen",
       },
       {
         logo: "./红土创新基金.jpg",
