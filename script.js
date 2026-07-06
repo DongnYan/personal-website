@@ -36,10 +36,24 @@ const content = {
     },
     internships: [
       {
+        logo: "./广发证券.jpg",
+        company: "广发证券",
+        department: "投行业务",
+        time: "2026.07 - 至今",
+        location: "广州",
+      },
+      {
+        logo: "./红土创新基金.jpg",
+        company: "红土创新基金",
+        department: "研究部",
+        time: "2026.06 - 2026.07",
+        location: "深圳",
+      },
+      {
         logo: "./投控东海.JPG",
         company: "深圳市投控东海投资有限公司",
         department: "并购业务部",
-        time: "2026.03 - 至今",
+        time: "2026.03 - 2026.05",
         location: "深圳",
       },
       {
@@ -118,10 +132,24 @@ const content = {
     },
     internships: [
       {
+        logo: "./广发证券.jpg",
+        company: "GF Securities",
+        department: "Investment Banking",
+        time: "Jul 2026 - Present",
+        location: "Guangzhou",
+      },
+      {
+        logo: "./红土创新基金.jpg",
+        company: "HotLand Asset Management",
+        department: "Research Department",
+        time: "Jun 2026 - Jul 2026",
+        location: "Shenzhen",
+      },
+      {
         logo: "./投控东海.JPG",
         company: "Toposcend Capital",
         department: "M&A",
-        time: "Mar 2026 - Present",
+        time: "Mar 2026 - May 2026",
         location: "Shenzhen",
       },
       {
